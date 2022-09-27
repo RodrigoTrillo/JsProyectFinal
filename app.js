@@ -33,12 +33,18 @@ const precioTotal = document.getElementById("precioTotal")
 
 let carrito =[]
 
-document.addEventListener("DOMContentLoaded",()=>{
+
+// cambiando a ternario
+
+document.addEventListener('DOMContentLoaded', () => {
+    localStorage.getItem('carrito')? (carrito = JSON.parse(localStorage.getItem('carrito')), actualizarCarrito()): null
+    })
+/* document.addEventListener("DOMContentLoaded",()=>{
     if (localStorage.getItem("carrito")){
         carrito= JSON.parse(localStorage.getItem("carrito"))
         actualizarCarrito()
     }
-})
+}) */
 
 
 botonVaciar.addEventListener(`click`, ()=>{
@@ -71,21 +77,16 @@ productos.forEach((producto) => {
 
 const agregarCarrito = (prodId)=>{
     const existe = carrito.some (prod =>prod.id === prodId)
-        if (existe){
-            const prod=carrito.map(prod =>{
-                if (prod.id === prodId){
-                    prod.cantidad++
-                }
-            })
-        } else {
-
-    const item = productos.find((prod) => prod.id === prodId)
-    carrito.push(item)
+    let prod;
+    let item;
+    existe? (prod = carrito.map(prod=>{
+        if (prod.id === prodId)
+            prod.cantidad++
+    })):(item = productos.find ((prod)=> prod.id === prodId), carrito.push(item))
     actualizarCarrito()
     console.log(carrito)
 }
-actualizarCarrito()
-}
+
 const eliminarDelCarrito=(prodId)=>{
     const item = carrito.find((prod)=> prod.id === prodId)
     const indice = carrito.indexOf(item)
