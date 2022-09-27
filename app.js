@@ -39,16 +39,12 @@ let carrito =[]
 document.addEventListener('DOMContentLoaded', () => {
     localStorage.getItem('carrito')? (carrito = JSON.parse(localStorage.getItem('carrito')), actualizarCarrito()): null
     })
-/* document.addEventListener("DOMContentLoaded",()=>{
-    if (localStorage.getItem("carrito")){
-        carrito= JSON.parse(localStorage.getItem("carrito"))
-        actualizarCarrito()
-    }
-}) */
+
 
 
 botonVaciar.addEventListener(`click`, ()=>{
     carrito.length= 0
+    localStorage.clear()
     actualizarCarrito()
 })
 
