@@ -85,3 +85,16 @@ header{
     padding: 5px;
     border-radius: 4px;
 }
+.boton-agregar:hover{
+    background-color: #a239ca;
+}
+
+.btn-close{
+    background-color: #a239ca;
+}
+.btn-close:hover{
+    background-color:#4717f6 ;
+}
+.offcanvas-header{
+    background-color: #0e0b16;
+}

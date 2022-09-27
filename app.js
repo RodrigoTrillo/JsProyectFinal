@@ -80,6 +80,16 @@ const agregarCarrito = (prodId)=>{
             prod.cantidad++
     })):(item = productos.find ((prod)=> prod.id === prodId), carrito.push(item))
     actualizarCarrito()
+    Toastify({
+        text: "Agregaste un producto al Carrito !!!",
+        duration: 3000,
+        gravity: "bottom",
+        position: "left", 
+        stopOnFocus: true, 
+        style: {
+          background: "linear-gradient(to right, #4717f6, #a239ca)",
+        }
+      }).showToast()
     console.log(carrito)
 }
 
